@@ -1,0 +1,31 @@
+<div class="background-color">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4"></div>
+            <div class="col-lg-4 centralized top">
+
+                <div class="card">
+                    <div class="card-body">
+                        <label mdbLabel class="form-label fw-bold fs-3">Bem Vindo de Volta</label>
+                        <br>
+                        <label mdbLabel class="form-label fs- 5">insira seu acesso</label>
+                        <mdb-form-control>
+                            <input mdbInput type="text" id="usuario" class="form-control" [(ngModel)]="usuario" />
+                            <label mdbLabel class="form-label" for="usuario">Usuário</label>
+                        </mdb-form-control>
+                        <br>
+                        <mdb-form-control>
+                            <input mdbInput type="password" id="senha" class="form-control" [(ngModel)]="senha" (keydown.enter)="logar()" />
+                            <label mdbLabel class="form-label" for="senha">Senha</label>
+                        </mdb-form-control>
+                        <br>
+                        <br>
+                        <button type="button" class="btn btn-primary btn-rounded mb-2" mdbRipple (click)="logar()">Acessar</button>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-lg-4"></div>
+        </div>
+    </div>
+</div>    

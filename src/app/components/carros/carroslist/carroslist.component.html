@@ -1,0 +1,76 @@
+<br>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div class="card">
+                <div class="card-body">
+                    <h3>Listagem de Carros</h3>
+                    <div class="right-align">
+
+                        <button type="button" class="btn btn-primary btn-rounded mb-2" mdbRipple (click)="new()">
+                            Novo - Fácil
+                        </button>
+
+                        <button type="button" class="btn btn-primary btn-rounded mb-2" mdbRipple
+                            routerLink="/admin/carros/new/">
+                            Novo
+                        </button>
+                    </div>
+                    <br>
+                    <table border="1" class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>NOME</th>
+                                <th>AÇÕES</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (carro of lista; track $index) {
+                            <tr>
+                                <td>{{carro.id}}</td>
+                                <td>{{carro.nome}}</td>
+                                <td class="right-align">
+                                    <button type="button" class="btn btn-primary btn-rounded mb-2" mdbRipple
+                                        (click)="edit(carro)">
+                                        Editar - Fácil
+                                    </button>
+                                    <button type="button" class="btn btn-primary btn-rounded mb-2" mdbRipple
+                                        routerLink="/admin/carros/edit/{{carro.id}}">
+                                        Editar
+                                    </button>
+                                    <button type="button" class="btn btn-danger btn-rounded mb-2" mdbRipple
+                                        (click)="deletar(carro.id)">
+                                        Deletar
+                                    </button>
+                                </td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<ng-template #modalCarroDetalhe>
+    <div class="modal-header">
+        @if (carroEdit.id >0) {
+        <h5 class="modal-title" id="exampleModalLabel">Editar Veículo</h5>
+        }@else {
+        <h5 class="modal-title" id="exampleModalLabel">Cadastrar Veículo</h5>
+        }
+        <button type="button" class="btn-close" aria-label="Close" (click)="modalRef.close()"></button>
+    </div>
+    <div class="modal-body">
+
+        <app-carrosdetails [carro]="carroEdit" (retorno)="retornoDetalhe($event)"></app-carrosdetails>
+
+    </div>
+
+</ng-template>

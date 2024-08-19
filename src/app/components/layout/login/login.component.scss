@@ -1,0 +1,13 @@
+.top{
+    top: 30vh;
+    position: relative;
+
+}
+
+.background-color {
+    background-image: url('/assets/fundo.png');
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
