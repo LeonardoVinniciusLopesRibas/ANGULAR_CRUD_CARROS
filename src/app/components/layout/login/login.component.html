@@ -10,12 +10,12 @@
                         <br>
                         <label mdbLabel class="form-label fs- 5">insira seu acesso</label>
                         <mdb-form-control>
-                            <input mdbInput type="text" id="usuario" class="form-control" [(ngModel)]="usuario" />
+                            <input mdbInput type="text" id="usuario" class="form-control" [(ngModel)]="login.username" />
                             <label mdbLabel class="form-label" for="usuario">Usuário</label>
                         </mdb-form-control>
                         <br>
                         <mdb-form-control>
-                            <input mdbInput type="password" id="senha" class="form-control" [(ngModel)]="senha" (keydown.enter)="logar()" />
+                            <input mdbInput type="password" id="senha" class="form-control" [(ngModel)]="login.password" (keydown.enter)="logar()" />
                             <label mdbLabel class="form-label" for="senha">Senha</label>
                         </mdb-form-control>
                         <br>

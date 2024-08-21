@@ -57,13 +57,12 @@
 </div>
 
 
-
 <ng-template #modalCarroDetalhe>
     <div class="modal-header">
         @if (carroEdit.id >0) {
         <h5 class="modal-title" id="exampleModalLabel">Editar Veículo</h5>
         }@else {
-        <h5 class="modal-title" id="exampleModalLabel">Cadastrar Veículo</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Cadastrar Veículo</h5    >
         }
         <button type="button" class="btn-close" aria-label="Close" (click)="modalRef.close()"></button>
     </div>

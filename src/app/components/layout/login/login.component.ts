@@ -3,6 +3,8 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
 import Swal from 'sweetalert2';
+import { LoginService } from '../../../auth/login.service';
+import { Login } from '../../../auth/login';
 
 @Component({
   selector: 'app-login',
@@ -12,25 +14,39 @@ import Swal from 'sweetalert2';
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
-
-  usuario!: string;
-  senha!: string;
+  login: Login = new Login();
 
   router = inject(Router);
+  loginService = inject(LoginService);
+
 
   logar(){
-    if(this.usuario == 'admin' && this.senha == 'admin'){
-      this.router.navigate(['admin/carros'])
-    }
-    else{
-      Swal.fire({
-        position: "top-end",
-        icon: "error",
-        title: "Usuário ou senha incorretos",
-        showConfirmButton: false,
-        timer: 1500
-      });
-    }
+
+    this.loginService.logar(this.login).subscribe({
+      next: token => {
+        if(token){//o usuario estão corretos
+          this.loginService.addToken(token);
+          this.router.navigate(['/admin/carros']);
+        }else{
+          Swal.fire({
+            title: 'Erro!',
+            text: 'Usuário ou senha incorretos',
+            icon: 'error',
+            confirmButtonText: 'Ok'
+          });          
+        }
+      },
+      error: erro => {
+        Swal.fire({
+          title: 'Erro!',
+          text: 'Ocorreu um erro! O erro é: ' + (erro.response?.data?.message || erro.message || 'Erro desconhecido'),
+          icon: 'error',
+          confirmButtonText: 'Ok'
+        });
+      }
+      
+    });
+
   }
 
 }
